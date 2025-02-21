@@ -1,4 +1,4 @@
-./ModelCreating_python/Dataset/precomputed/
-./ModelCreating_python//Dataset/Data_labels.csv
-./screenshots
-./ModelCreating_python/cnn-final.ipynb
+ModelCreating_python/Dataset/precomputed/
+ModelCreating_python//Dataset/Data_labels.csv
+screenshots
+ModelCreating_python/cnn-final.ipynb
