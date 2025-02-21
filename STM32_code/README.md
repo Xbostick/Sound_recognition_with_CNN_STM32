@@ -29,7 +29,6 @@ screen5
 - **`./STM32_code/Core/Src/main.c`**  
   _(Initializes the microcontroller and calls AI inference functions)_ There is minimal functional to operate STM32U5 with INMP441
 
-### 🔷 ** Compiling & Flashing the Firmware**
 
 ## 📝 Notes
 - Ensure the model is converted to **TFLite format** and properly integrated.
@@ -41,7 +40,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-🔹 **Maintainer:** Your Name  
-🔹 **Contact:** your.email@example.com  
 🔹 **Contributions:** Feel free to open an issue or pull request!
 
