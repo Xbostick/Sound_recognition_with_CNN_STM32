@@ -1,0 +1,617 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "validate --target stm32u5 --name network -m C:/Users/Sundrax/Desktop/ModelCreating/URBAN_SHOOTING_V01_integer.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Sundrax/AppData/Local/Temp/mxAI_workspace10415215012302008209879872654974520 --output C:/Users/Sundrax/.stm32cubemx/network_output --valoutput C:/Users/Sundrax/Desktop/ModelCreating/test_labels.npy --valinput C:/Users/Sundrax/Desktop/ModelCreating/test.npy",
+    "cli_version": {
+        "extra": "19894",
+        "major": 1,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "1.0.0-19894",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2024-12-25T17:22:29+0300",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "validate",
+    "exec_duration": 0.0,
+    "hash": "0x1b4cc6cc6fa3cd7ab9c307fa6edc38b5",
+    "inputs": [
+        "serving_default_input_50"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 7120,
+                    "fmt": {
+                        "format": "u8"
+                    },
+                    "shape": [
+                        40,
+                        178
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_50",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 14240,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 7120,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        40,
+                        178
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_50"
+            ],
+            "name": "conversion_0",
+            "original": "QUANTIZE",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conversion_0"
+            ],
+            "name": "reshape_1",
+            "original": "EXPAND_DIMS",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                1,
+                2
+            ],
+            "extras": {
+                "n_macc": 341776,
+                "n_params": 1936,
+                "psize": 1984,
+                "rom_output": {
+                    "c_size": 2848,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        178,
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 1984
+            },
+            "id": 2,
+            "inputs": [
+                "reshape_1"
+            ],
+            "name": "conv2d_2",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 2848,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "conv2d_2"
+            ],
+            "name": "nl_2_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "nl_2_nl"
+            ],
+            "name": "reshape_3",
+            "original": "RESHAPE",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "reshape_3"
+            ],
+            "name": "reshape_4",
+            "original": "EXPAND_DIMS",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                3
+            ],
+            "extras": {
+                "n_macc": 2848,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 1424,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        1,
+                        16,
+                        89
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "reshape_4"
+            ],
+            "name": "pool_5",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [
+                "pool_5"
+            ],
+            "name": "reshape_6",
+            "original": "RESHAPE",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 7,
+            "inputs": [
+                "reshape_6"
+            ],
+            "name": "reshape_7",
+            "original": "EXPAND_DIMS",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                4,
+                5
+            ],
+            "extras": {
+                "n_macc": 136736,
+                "n_params": 1568,
+                "psize": 1664,
+                "rom_output": {
+                    "c_size": 2848,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        89,
+                        32,
+                        1
+                    ]
+                },
+                "rom_size": 1664
+            },
+            "id": 8,
+            "inputs": [
+                "reshape_7"
+            ],
+            "name": "conv2d_8",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 2848,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 8,
+            "inputs": [
+                "conv2d_8"
+            ],
+            "name": "nl_8_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 9,
+            "inputs": [
+                "nl_8_nl"
+            ],
+            "name": "reshape_9",
+            "original": "RESHAPE",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 10,
+            "inputs": [
+                "reshape_9"
+            ],
+            "name": "reshape_10",
+            "original": "EXPAND_DIMS",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                6
+            ],
+            "extras": {
+                "n_macc": 2816,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 1408,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        1,
+                        32,
+                        44
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 11,
+            "inputs": [
+                "reshape_10"
+            ],
+            "name": "pool_11",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 12,
+            "inputs": [
+                "pool_11"
+            ],
+            "name": "reshape_12",
+            "original": "RESHAPE",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                7
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 90112,
+                "psize": 90112,
+                "rom_size": 90368
+            },
+            "id": 13,
+            "inputs": [],
+            "name": "Convolutional_Model_Dense_1_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 64,
+                "psize": 256,
+                "rom_size": 0
+            },
+            "id": 13,
+            "inputs": [],
+            "name": "Convolutional_Model_Dense_1_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 90176,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 13,
+            "inputs": [
+                "reshape_12",
+                "Convolutional_Model_Dense_1_MatMul",
+                "Convolutional_Model_Dense_1_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_13",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 64,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 13,
+            "inputs": [
+                "gemm_13"
+            ],
+            "name": "nl_13_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                8
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 128,
+                "psize": 128,
+                "rom_size": 136
+            },
+            "id": 14,
+            "inputs": [],
+            "name": "Convolutional_Model_Dense_final_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 2,
+                "psize": 8,
+                "rom_size": 0
+            },
+            "id": 14,
+            "inputs": [],
+            "name": "Convolutional_Model_Dense_final_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 130,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 2,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        2
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 14,
+            "inputs": [
+                "nl_13_nl",
+                "Convolutional_Model_Dense_final_MatMul",
+                "Convolutional_Model_Dense_final_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_14",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                9
+            ],
+            "extras": {
+                "n_macc": 30,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 2,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        2
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 15,
+            "inputs": [
+                "gemm_14"
+            ],
+            "name": "nl_15",
+            "original": "SOFTMAX",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                10
+            ],
+            "extras": {
+                "n_macc": 4,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 2,
+                    "fmt": {
+                        "format": "u8"
+                    },
+                    "shape": [
+                        2
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 16,
+            "inputs": [
+                "nl_15"
+            ],
+            "name": "conversion_16",
+            "original": "QUANTIZE",
+            "type": "Conversion"
+        }
+    ],
+    "model_files": [
+        "C:\\Users\\Sundrax\\Desktop\\ModelCreating\\URBAN_SHOOTING_V01_integer.tflite"
+    ],
+    "model_n_params": 93810,
+    "model_name": "URBAN_SHOOTING_V01_integer",
+    "model_size": 94152,
+    "model_type": "tflite",
+    "name": "network",
+    "outputs": [
+        "conversion_16"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 14592,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 7120,
+            "c_type": "u8",
+            "name": "serving_default_input_50"
+        }
+    ],
+    "rom_n_macc": 588756,
+    "rom_outputs": [
+        {
+            "c_size": 2,
+            "c_type": "u8",
+            "name": "conversion_16"
+        }
+    ],
+    "rom_size": 94152,
+    "strategy": "",
+    "tools_api_version": "1.0.0-19894",
+    "tools_version": "1.0.0-19894",
+    "val_error": 0.0,
+    "val_error_desc": "x-cross (rmse) #1",
+    "val_metrics": [
+        {
+            "acc": "98.97%",
+            "cos": 0.9909668564796448,
+            "desc": "HOST c-model #1",
+            "l2r": 0.13522307574748993,
+            "mae": 0.01540153007954359,
+            "mean": 0.0017922268016263843,
+            "nse": 0.9640498706432888,
+            "rmse": 0.0948297530412674,
+            "std": 0.09483995288610458,
+            "ts_name": "conversion_16, (2,), m_id=[16]"
+        },
+        {
+            "acc": "98.97%",
+            "cos": 0.9909668564796448,
+            "desc": "original model #1",
+            "l2r": 0.13522307574748993,
+            "mae": 0.01540153007954359,
+            "mean": 0.0017922268016263843,
+            "nse": 0.9640498706432888,
+            "rmse": 0.0948297530412674,
+            "std": 0.09483995288610458,
+            "ts_name": "conversion_16, (2,), m_id=[16]"
+        },
+        {
+            "acc": "100.00%",
+            "cos": 1.0,
+            "desc": "X-cross #1",
+            "l2r": 0.0,
+            "mae": 0.0,
+            "mean": 0.0,
+            "nse": 1.0,
+            "rmse": 0.0,
+            "std": 0.0,
+            "ts_name": "conversion_16, (2,), m_id=[16]"
+        }
+    ]
+}
