@@ -31,14 +31,17 @@ Then open the link shown in the terminal.
  ┣ 📂 STM32_code
  ┃ ┃ ... 
  ┃ ┃ ...
- ┃ ┃ 📜 README.md           # cpp project documentation
+ ┃ ┃ 📜 README.md           	# cpp project documentation
  ┣ 📂 ModelCreating_python
- ┃ ┣ 📜 dataPreprocess.py  # Preprocesses audio data
- ┃ ┣ 📜 model.py           # Defines and trains the CNN model
- ┃ ┣ 📜 modelConvert.py    # Converts the model to TFLite
- ┣ 📜 Dockerfile          # Containerized environment setup
- ┣ 📜 requirements.txt    # Required Python dependencies
- ┣ 📜 README.md           # Project documentation
+ ┃ ┣ 📂 sources 
+ ┃ ┃ ┣ 📜 dataPreprocess.py  	# Preprocesses audio data
+ ┃ ┃ ┣ 📜 model.py           	# Defines and trains the CNN model
+ ┃ ┃ ┣ 📜 modelConvert.py    	# Converts the model to TFLite  
+ ┃ ┣ 📂 Dataset  
+ ┃ ┣ 📜 example_process.ipynb  	# Demo notebook
+ ┣ 📜 Dockerfile          	# Containerized environment setup
+ ┣ 📜 requirements.txt    	# Required Python dependencies
+ ┣ 📜 README.md           	# Project documentation
 ```
 
 ## 📌 Notes

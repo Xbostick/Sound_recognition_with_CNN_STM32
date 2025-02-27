@@ -69,7 +69,7 @@ extern UART_HandleTypeDef huart1;
 static uint32_t pAudBufCopy[AUDIO_BUFF_SIZE] = {0}; 
 float pFeatureBuf[FEATURES_BUFF_SIZE]; // Buff to storage preprocessed data. Raw inputs for NN
 arm_mfcc_instance_f32 mfccf32;
-float NN_output[2] =  {0,0};	
+float NN_output[4] =  {0,0,0,0};	
 uint8_t is_last = 0;	
 uint8_t LED_STATE = 0;
 uint8_t is_silence = 0;
@@ -254,13 +254,14 @@ int acquire_and_process_data(ai_i8* data[])
 
 int post_process(ai_i8* data[])
 {
-	/* amplitude > 0.1 and NN detected shooting with conf >= 50%*/
-	if (NN_output[1] >= 0.3 && is_silence==0 && LED_STATE==0){	
-		uint8_t message_1[20] = "\nGun sound detecting";
+	/* amplitude > 0.1 and NN detected sound with conf >= 30%*/
+	if (( NN_output[0] >= 0.3 || NN_output[1] >= 0.3 || NN_output[2] >= 0.3 || NN_output[3] >= 0.3) && is_silence==0 && LED_STATE==0){	
+		uint8_t message_1[20] = "\nSound detecting";
 		uint8_t message_2[20] = "\nModel confidence = ";
-		uint8_t conf1 = floor(NN_output[1]*10);
-		uint8_t conf2 = floor(NN_output[1]*100) - conf1*10 + 0x30;
-		conf1 += 0x30;
+		uint8_t conf1 = floor(NN_output[0]*10);
+    uint8_t conf2 = floor(NN_output[1]*10);
+    uint8_t conf3 = floor(NN_output[2]*10);
+		uint8_t conf4 = floor(NN_output[3]*10);
 		LED_STATE = 1;
 		timer = HAL_GetTick();
 		HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,0);
@@ -268,6 +269,8 @@ int post_process(ai_i8* data[])
 		HAL_UART_Transmit(&huart1, message_2,18,10);
 		HAL_UART_Transmit(&huart1, &conf1,1,10);
 		HAL_UART_Transmit(&huart1, &conf2,1,10);
+    HAL_UART_Transmit(&huart1, &conf3,1,10);
+		HAL_UART_Transmit(&huart1, &conf4,1,10);
 		
 	}
 	/* amplitude < 0.1 and uart has been silenced 5000ms */
