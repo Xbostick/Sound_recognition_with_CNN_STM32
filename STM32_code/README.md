@@ -12,16 +12,31 @@ This README provides instructions on how to integrate and run the deployed **CNN
 ## 🔷 ** Setting Up X-CUBE-AI**
 ### Install X-CUBE-AI plugin
 Go to *Software packs *
-screen1
+
+![image](https://github.com/user-attachments/assets/0d5e1648-afb1-4523-ae3c-d374a8c33b2e)
+
+
 Find plugin
-screen2
+
+![image](https://github.com/user-attachments/assets/5ff52040-84c2-4e14-8214-571457999bee)
+
+
 Check if it setup properly
-screen3
+
+![image](https://github.com/user-attachments/assets/76c8f320-88b0-480e-8c4c-51a1b63aebf8)
+
+
 ### Setup X-CUBE-AI plugin
 Add new model in plugin
-screen4
+
+![image](https://github.com/user-attachments/assets/346b564b-d487-4936-ad58-d5ef5b4044f9)
+
+
 Add your own model
-screen5
+
+![image](https://github.com/user-attachments/assets/fa90a613-b15a-4a41-9786-d660bdc432e5)
+
+
 ### 🔷 ** Editing sources files**
 #### 📂 Key Source Files
 - **`./STM32_code/X-CUBE-AI/App/app_x-cube-ai.c`**  
